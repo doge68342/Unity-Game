@@ -1,0 +1,17 @@
+# Unity generated folders
+Library/
+Temp/
+Obj/
+Build/
+Logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# JetBrains Rider or VSCode
+.idea/
+.vscode/
+
+# Packages cache
+Packages/com.unity.*
