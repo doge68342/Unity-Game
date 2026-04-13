@@ -13,11 +13,9 @@ public class PlayerScript : MonoBehaviour
     public float playerSpeed = 2.0f;
     public float jumpPower = 5.0f;
     public float jumpBoostFactor = 0.75f;
-    public float groundSlamPower = 20;
     public float wallJumpPower = 5f;
     public float walljumpNormalPower = 15f;
     public float wallJumpDownwardsForceCancelationFactor = 1f;
-
     public float cameraSensitivity = 1600f;
     public Transform cameraTransform;
     public Vector3 cameraOffset = new Vector3(0, 0.99f, 0);
@@ -27,7 +25,6 @@ public class PlayerScript : MonoBehaviour
 
     public bool isOnGround;
     public bool isTouchingWall;
-    private bool slamDebounce = false;
     private Rigidbody rb;
     private Dictionary<Collider, Vector3> touching = new Dictionary<Collider, Vector3>();
     private float xRotation = 0f;
@@ -92,14 +89,8 @@ public class PlayerScript : MonoBehaviour
             }
             if (isTouchingWall && !isOnGround)
             {
-                rb.AddForce(Vector3.up * (wallJumpPower + MathF.Max(-rb.linearVelocity.y, 0) * wallJumpDownwardsForceCancelationFactor) + touchingSurfaceNormal * walljumpNormalPower, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * (wallJumpPower + -rb.linearVelocity.y * wallJumpDownwardsForceCancelationFactor) + touchingSurfaceNormal * walljumpNormalPower, ForceMode.Impulse);
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftControl) && !isOnGround && !slamDebounce)
-        {
-            rb.AddForce(-Vector3.up * Mathf.Max(groundSlamPower, rb.linearVelocity.y + groundSlamPower), ForceMode.Impulse);
-            slamDebounce = true;
         }
 
     }
@@ -139,7 +130,6 @@ public class PlayerScript : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         touching[collision.collider] = collision.contacts[0].normal;
-        slamDebounce = false;
     }
 
     void OnCollisionStay(Collision collision)

@@ -1016,6 +1016,7 @@ GameObject:
   - component: {fileID: 1502293609}
   - component: {fileID: 1502293614}
   - component: {fileID: 1502293615}
+  - component: {fileID: 1502293616}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1133,11 +1134,10 @@ MonoBehaviour:
   playerSpeed: 10
   jumpPower: 7.5
   jumpBoostFactor: 0.75
-  groundSlamPower: 40
   wallJumpPower: 7.5
   walljumpNormalPower: 15
-  wallJumpDownwardsForceCancelationFactor: 1
-  cameraSensitivity: 1600
+  wallJumpDownwardsForceCancelationFactor: 0.85
+  cameraSensitivity: 3200
   cameraTransform: {fileID: 330585546}
   cameraOffset: {x: 0, y: 1, z: 0}
   groundMovementSmoothingFactor: 10
@@ -1172,6 +1172,32 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &1502293616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502293608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b6217c558f79ec89a72050592b4340c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerScript
+  playerSpeed: 2
+  jumpPower: 5
+  jumpBoostFactor: 0.75
+  wallJumpPower: 5
+  walljumpNormalPower: 15
+  wallJumpDownwardsForceCancelationFactor: 1
+  cameraSensitivity: 3200
+  cameraTransform: {fileID: 0}
+  cameraOffset: {x: 0, y: 0.99, z: 0}
+  groundMovementSmoothingFactor: 10
+  airMovementSmoothingFactor: 5
+  velocityText: {fileID: 0}
+  isOnGround: 0
+  isTouchingWall: 0
 --- !u!1 &1690606560
 GameObject:
   m_ObjectHideFlags: 0
