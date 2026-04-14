@@ -7,6 +7,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -15,13 +16,17 @@ public class PlayerScript : MonoBehaviour
     public float jumpBoostFactor = 0.75f;
     public float wallJumpPower = 5f;
     public float walljumpNormalPower = 15f;
+    public float dashPower = 20f;
     public float wallJumpDownwardsForceCancelationFactor = 1f;
     public float cameraSensitivity = 1600f;
     public Transform cameraTransform;
     public Vector3 cameraOffset = new Vector3(0, 0.99f, 0);
     public float groundMovementSmoothingFactor = 10;
     public float airMovementSmoothingFactor = 5;
+    public float maxDashCooldown = 1f;
     public TMP_Text velocityText;
+    public Image dashCooldownBar;
+    private Vector2 originalDashCooldownBarSize;
 
     public bool isOnGround;
     public bool isTouchingWall;
@@ -33,11 +38,13 @@ public class PlayerScript : MonoBehaviour
     private Vector3 touchingSurfaceNormal;
     private Vector3 cameraForward;
     private Vector3 cameraRight;
+    public float dashCooldown;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
+        originalDashCooldownBarSize = dashCooldownBar.rectTransform.rect.size;
     }
 
     // Update is called once per frame
@@ -91,6 +98,15 @@ public class PlayerScript : MonoBehaviour
             {
                 rb.AddForce(Vector3.up * (wallJumpPower + -rb.linearVelocity.y * wallJumpDownwardsForceCancelationFactor) + touchingSurfaceNormal * walljumpNormalPower, ForceMode.Impulse);
             }
+        }
+
+        dashCooldown = math.min(dashCooldown + Time.deltaTime, maxDashCooldown);
+        dashCooldownBar.rectTransform.sizeDelta = new Vector2(dashCooldown / maxDashCooldown * originalDashCooldownBarSize.x, originalDashCooldownBarSize.y);
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCooldown == maxDashCooldown)
+        {
+            rb.AddForce((cameraForward.normalized * inputVector.z + cameraRight.normalized * inputVector.x).normalized * dashPower, ForceMode.Impulse);
+            dashCooldown = 0;
         }
 
     }
