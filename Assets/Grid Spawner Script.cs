@@ -1,3 +1,4 @@
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class GridSpawnerScript : MonoBehaviour
     public Vector3 position;
     public int gridScale;
     public int maxGridObjectHeight;
-
+    public int girdObjectScale;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,7 +17,7 @@ public class GridSpawnerScript : MonoBehaviour
         {
             for (int z = 0; z < gridSize; z++)
             {
-                Instantiate(gridObject, new Vector3(x * gridScale, UnityEngine.Random.Range(1, maxGridObjectHeight) * 200/215 * 3, z * gridScale) + position, quaternion.identity);
+                Instantiate(gridObject, new Vector3(x * gridScale, Mathf.FloorToInt(MathF.Pow(UnityEngine.Random.value, 3f) * maxGridObjectHeight) * gridScale, z * gridScale) + position, quaternion.identity);
             }
         }
     }

@@ -337,7 +337,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 6.44, z: 0}
+  m_LocalPosition: {x: 0, y: 35.190002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1104,11 +1104,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9a999c9fd001862c8878cf79f1474e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridSpawnerScript
-  gridObject: {fileID: 5137899010284927630, guid: 53f65885cd1b6665da2c84b78e7e4cc3, type: 3}
+  gridObject: {fileID: 8873817256003431601, guid: 40f50de49b1134e49a1096d3f9dc1252, type: 3}
   gridSize: 30
-  position: {x: 0, y: 2, z: 0}
-  gridScale: 6
-  maxGridObjectHeight: 11
+  position: {x: 0, y: 0, z: 0}
+  gridScale: 5
+  maxGridObjectHeight: 10
+  girdObjectScale: 5
 --- !u!4 &1136506742
 Transform:
   m_ObjectHideFlags: 0
@@ -1447,7 +1448,7 @@ Transform:
   m_GameObject: {fileID: 1502293608}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.44, z: 0}
+  m_LocalPosition: {x: 0, y: 34.190002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
