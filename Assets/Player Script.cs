@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Xml;
 using TMPro;
 using TMPro.EditorUtilities;
 using Unity.Mathematics;
@@ -27,6 +28,10 @@ public class PlayerScript : MonoBehaviour
     public TMP_Text velocityText;
     public Image dashCooldownBar;
     private Vector2 originalDashCooldownBarSize;
+    public float jumpBufferTime = 0.2f;
+    public float jumpBufferCounter = 0f;
+    public Vector3 respawnPosition;
+    public int dashCharges;
 
     public bool isOnGround;
     public bool isTouchingWall;
@@ -88,25 +93,43 @@ public class PlayerScript : MonoBehaviour
 
         }
 
+
+
         if (Input.GetKeyDown(KeyCode.Space))
         {   
+            jumpBufferCounter = jumpBufferTime;
+        }
+
+        if (jumpBufferCounter > 0f)
+        {
             if (isOnGround || isTouchingWall && isOnGround)
             {
-               rb.AddForce(Vector3.up  * jumpPower + (cameraForward.normalized * inputVector.z + cameraRight.normalized * inputVector.x).normalized * jumpPower * jumpBoostFactor, ForceMode.Impulse); 
+                jumpBufferCounter = 0f;
+                rb.AddForce(Vector3.up  * jumpPower + (cameraForward.normalized * inputVector.z + cameraRight.normalized * inputVector.x).normalized * jumpPower * jumpBoostFactor, ForceMode.Impulse); 
             }
+
             if (isTouchingWall && !isOnGround)
             {
+                jumpBufferCounter = 0f;
                 rb.AddForce(Vector3.up * (wallJumpPower + -rb.linearVelocity.y * wallJumpDownwardsForceCancelationFactor) + touchingSurfaceNormal * walljumpNormalPower, ForceMode.Impulse);
             }
         }
 
+
+
         dashCooldown = math.min(dashCooldown + Time.deltaTime, maxDashCooldown);
+        jumpBufferCounter = Mathf.Max(0, jumpBufferCounter - Time.deltaTime);
         dashCooldownBar.rectTransform.sizeDelta = new Vector2(dashCooldown / maxDashCooldown * originalDashCooldownBarSize.x, originalDashCooldownBarSize.y);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCooldown == maxDashCooldown)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCooldown >= maxDashCooldown / dashCharges && inputVector != Vector3.zero)
         {
             rb.AddForce((cameraForward.normalized * inputVector.z + cameraRight.normalized * inputVector.x).normalized * dashPower, ForceMode.Impulse);
-            dashCooldown = 0;
+            dashCooldown -= maxDashCooldown / dashCharges;
+        }
+
+        if (transform.position.y <= -5)
+        {
+            transform.position = respawnPosition;
         }
 
     }

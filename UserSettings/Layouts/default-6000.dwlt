@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 93
+  controlID: 38
   draggingID: 0
 --- !u!114 &3
 MonoBehaviour:
@@ -94,7 +94,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 339
-    height: 1046
+    height: 1020
   m_MinSize: {x: 201, y: 226}
   m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 15}
@@ -118,9 +118,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 1046
+    y: 1020
     width: 2181
-    height: 295
+    height: 321
   m_MinSize: {x: 231, y: 276}
   m_MaxSize: {x: 10001, y: 10026}
   m_ActualView: {fileID: 13}
@@ -246,7 +246,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 2181
-    height: 1046
+    height: 1020
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
@@ -270,7 +270,7 @@ MonoBehaviour:
     x: 339
     y: 0
     width: 1842
-    height: 1046
+    height: 1020
   m_MinSize: {x: 202, y: 226}
   m_MaxSize: {x: 4002, y: 4026}
   m_ActualView: {fileID: 16}
@@ -567,9 +567,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 1125
+    y: 1099
     width: 2180
-    height: 269
+    height: 295
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -594,7 +594,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Models
+    - Assets
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -604,7 +604,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Models
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Field\Unity\Games\Unity-Game
   m_LockTracker:
@@ -613,15 +613,15 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs:
-    - m_Data: 47784
+    - m_Data: 47604
     m_LastClickedID:
-      m_Data: 47784
+      m_Data: 47604
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 47682
-    - m_Data: 47684
-    - m_Data: 47686
-    - m_Data: 47688
+    - m_Data: 47604
+    - m_Data: 47606
+    - m_Data: 47608
+    - m_Data: 47610
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -655,10 +655,10 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 47682
-    - m_Data: 47684
-    - m_Data: 47686
-    - m_Data: 47688
+    - m_Data: 47604
+    - m_Data: 47606
+    - m_Data: 47608
+    - m_Data: 47610
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -797,7 +797,7 @@ MonoBehaviour:
     x: 0
     y: 79
     width: 338
-    height: 1020
+    height: 994
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -818,7 +818,11 @@ MonoBehaviour:
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
-      - m_Data: -1544
+      - m_Data: -45310
+      - m_Data: -1322
+      - m_Data: 47210
+      - m_Data: 47246
+      - m_Data: 47274
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -869,7 +873,7 @@ MonoBehaviour:
     x: 339
     y: 79
     width: 1840
-    height: 1020
+    height: 994
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1272,9 +1276,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -27.665531, y: 47.07779, z: -35.27122}
+    m_Target: {x: 1000.8774, y: 699.14984, z: -512.18896}
     speed: 2
-    m_Value: {x: -27.665531, y: 47.07779, z: -35.27122}
+    m_Value: {x: 1000.8774, y: 699.14984, z: -512.18896}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1321,20 +1325,20 @@ MonoBehaviour:
     m_gridOpacity: 0.5
     m_NearestPlaneToHandleMode: 0
   m_Rotation:
-    m_Target: {x: 0.119664684, y: 0.2652367, z: -0.033168513, w: 0.9561241}
+    m_Target: {x: 0.19820693, y: -0.11669478, z: 0.023858087, w: 0.97283155}
     speed: 2
-    m_Value: {x: 0.11966806, y: 0.2652442, z: -0.03316945, w: 0.95615107}
+    m_Value: {x: 0.1982194, y: -0.116702124, z: 0.023859588, w: 0.97289276}
   m_Size:
-    m_Target: 0.17763127
+    m_Target: 0.6879351
     speed: 2
-    m_Value: 0.17763127
+    m_Value: 0.6879351
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 1.5202404
-    m_SpeedNormalized: 0.7600002
+    m_Speed: 2
+    m_SpeedNormalized: 1
     m_SpeedMin: 0.001
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -1385,7 +1389,7 @@ MonoBehaviour:
     x: 339
     y: 79
     width: 1840
-    height: 1020
+    height: 994
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1405,7 +1409,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1840, y: 999}
+  m_TargetSize: {x: 1840, y: 973}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -1422,8 +1426,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -920
     m_HBaseRangeMax: 920
-    m_VBaseRangeMin: -499.5
-    m_VBaseRangeMax: 499.5
+    m_VBaseRangeMin: -486.5
+    m_VBaseRangeMax: 486.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -1442,9 +1446,9 @@ MonoBehaviour:
       x: 0
       y: 21
       width: 1840
-      height: 999
+      height: 973
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 920, y: 499.5}
+    m_Translation: {x: 920, y: 486.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -1452,12 +1456,12 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -920
-      y: -499.5
+      y: -486.5
       width: 1840
-      height: 999
+      height: 973
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 1840, y: 1020}
+  m_LastWindowPixelSize: {x: 1840, y: 994}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -1486,8 +1490,8 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 937
-    width: 1639
+    y: 1297
+    width: 2180
     height: 97
   m_SerializedDataModeController:
     m_DataMode: 0

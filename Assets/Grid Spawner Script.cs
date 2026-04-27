@@ -17,7 +17,9 @@ public class GridSpawnerScript : MonoBehaviour
         {
             for (int z = 0; z < gridSize; z++)
             {
-                Instantiate(gridObject, new Vector3(x * gridScale, Mathf.FloorToInt(MathF.Pow(UnityEngine.Random.value, 3f) * maxGridObjectHeight) * gridScale, z * gridScale) + position, quaternion.identity);
+                GameObject clonedGridObject = Instantiate(gridObject, new Vector3(x * gridScale, Mathf.FloorToInt(MathF.Pow(UnityEngine.Random.value, 3f) * maxGridObjectHeight) * gridScale, z * gridScale) + position, quaternion.identity);
+                Renderer clonedRenderer = clonedGridObject.GetComponent<Renderer>();
+                clonedRenderer.material.color = Color.HSVToRGB(0, 0, UnityEngine.Random.Range(800f, 1000f) / 1000f);
             }
         }
     }
