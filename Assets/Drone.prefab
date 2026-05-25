@@ -159,6 +159,8 @@ MonoBehaviour:
   droneSpeed: 12
   preferedDistance: 15
   stopZone: 0
+  fireRate: 0
+  bullet: {fileID: 0}
 --- !u!135 &6993230933964665876
 SphereCollider:
   m_ObjectHideFlags: 0

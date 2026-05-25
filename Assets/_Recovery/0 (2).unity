@@ -618,24 +618,16 @@ PrefabInstance:
       value: Drone
       objectReference: {fileID: 0}
     - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 4451620935296596589, guid: dc090b534049662789bf4ae92a36badb, type: 3}
-    - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1502293608}
-    - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
-      propertyPath: fireRate
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1118724141124595698, guid: 99c5646583e24800d89f376bf144532e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1118724141124595698, guid: 99c5646583e24800d89f376bf144532e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 41.25
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1118724141124595698, guid: 99c5646583e24800d89f376bf144532e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1166,7 +1158,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136506740}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9a999c9fd001862c8878cf79f1474e3, type: 3}
   m_Name: 
