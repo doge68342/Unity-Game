@@ -217,6 +217,7 @@ RectTransform:
   - {fileID: 1461632795}
   - {fileID: 418142620}
   - {fileID: 434205655}
+  - {fileID: 1849127436}
   - {fileID: 130320245}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -299,6 +300,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130320244}
+  m_CullTransparentMesh: 1
+--- !u!1 &167068753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 167068754}
+  - component: {fileID: 167068756}
+  - component: {fileID: 167068755}
+  m_Layer: 5
+  m_Name: HealthBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &167068754
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167068753}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1849127436}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -243.75, y: 0}
+  m_SizeDelta: {x: 487.5, y: 37.5}
+  m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &167068755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167068753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.39237422, b: 0.3820755, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &167068756
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167068753}
   m_CullTransparentMesh: 1
 --- !u!1001 &275104792
 PrefabInstance:
@@ -629,6 +705,10 @@ PrefabInstance:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 4451620935296596589, guid: dc090b534049662789bf4ae92a36badb, type: 3}
+    - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
       propertyPath: target
       value: 
@@ -982,7 +1062,7 @@ GameObject:
   - component: {fileID: 434205657}
   - component: {fileID: 434205656}
   m_Layer: 5
-  m_Name: Image
+  m_Name: DashBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1070,6 +1150,10 @@ PrefabInstance:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 4451620935296596589, guid: dc090b534049662789bf4ae92a36badb, type: 3}
+    - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
       propertyPath: target
       value: 
@@ -1171,6 +1255,10 @@ PrefabInstance:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 4451620935296596589, guid: dc090b534049662789bf4ae92a36badb, type: 3}
+    - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
       propertyPath: target
       value: 
@@ -1401,6 +1489,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4451620935296596589, guid: dc090b534049662789bf4ae92a36badb, type: 3}
     - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1502293608}
@@ -1501,6 +1593,10 @@ PrefabInstance:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 4451620935296596589, guid: dc090b534049662789bf4ae92a36badb, type: 3}
+    - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
       propertyPath: target
       value: 
@@ -1613,6 +1709,8 @@ MonoBehaviour:
   gridScale: 5
   maxGridObjectHeight: 10
   girdObjectScale: 5
+  randomizeInterval: 5
+  randomizeTimer: 0
 --- !u!4 &1136506742
 Transform:
   m_ObjectHideFlags: 0
@@ -1729,6 +1827,10 @@ PrefabInstance:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 4451620935296596589, guid: dc090b534049662789bf4ae92a36badb, type: 3}
+    - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
       propertyPath: target
       value: 
@@ -1958,7 +2060,7 @@ GameObject:
   - component: {fileID: 1502293614}
   - component: {fileID: 1502293615}
   - component: {fileID: 1502293616}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2072,6 +2174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6217c558f79ec89a72050592b4340c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerScript
+  maxHealth: 100
+  health: 0
   playerSpeed: 10
   jumpPower: 7.5
   jumpBoostFactor: 0.75
@@ -2087,6 +2191,7 @@ MonoBehaviour:
   maxDashCooldown: 4.5
   velocityText: {fileID: 418142621}
   dashCooldownBar: {fileID: 1188267900}
+  healthBar: {fileID: 167068755}
   jumpBufferTime: 0.1
   jumpBufferCounter: 0
   respawnPosition: {x: 0, y: 35, z: 0}
@@ -2133,6 +2238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6217c558f79ec89a72050592b4340c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerScript
+  maxHealth: 100
+  health: 0
   playerSpeed: 2
   jumpPower: 5
   jumpBoostFactor: 0.75
@@ -2148,6 +2255,7 @@ MonoBehaviour:
   maxDashCooldown: 1
   velocityText: {fileID: 0}
   dashCooldownBar: {fileID: 0}
+  healthBar: {fileID: 0}
   jumpBufferTime: 0.2
   jumpBufferCounter: 0
   respawnPosition: {x: 0, y: 0, z: 0}
@@ -2179,6 +2287,10 @@ PrefabInstance:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 4451620935296596589, guid: dc090b534049662789bf4ae92a36badb, type: 3}
+    - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
       propertyPath: target
       value: 
@@ -2331,6 +2443,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806998646}
   m_CullTransparentMesh: 1
+--- !u!1 &1849127435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1849127436}
+  - component: {fileID: 1849127438}
+  - component: {fileID: 1849127437}
+  m_Layer: 5
+  m_Name: HealthBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1849127436
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849127435}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 167068754}
+  m_Father: {fileID: 41706197}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 250, y: 75}
+  m_SizeDelta: {x: 500, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1849127437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849127435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 0.6509804}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1849127438
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849127435}
+  m_CullTransparentMesh: 1
 --- !u!1 &1886845514
 GameObject:
   m_ObjectHideFlags: 0
@@ -2430,6 +2618,10 @@ PrefabInstance:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 4451620935296596589, guid: dc090b534049662789bf4ae92a36badb, type: 3}
+    - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1110547754333230519, guid: 99c5646583e24800d89f376bf144532e, type: 3}
       propertyPath: target
       value: 

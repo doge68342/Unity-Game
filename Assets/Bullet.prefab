@@ -108,7 +108,8 @@ MonoBehaviour:
   bulletSpeed: 50
   target: {fileID: 0}
   gun: {fileID: 0}
-  lifeTime: 5
+  lifeTime: 10
+  damage: 0
 --- !u!54 &1128885241771967950
 Rigidbody:
   m_ObjectHideFlags: 0

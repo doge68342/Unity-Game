@@ -12,6 +12,8 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
+    public float maxHealth = 100;
+    public float health;
     public float playerSpeed = 2.0f;
     public float jumpPower = 5.0f;
     public float jumpBoostFactor = 0.75f;
@@ -27,7 +29,9 @@ public class PlayerScript : MonoBehaviour
     public float maxDashCooldown = 1f;
     public TMP_Text velocityText;
     public Image dashCooldownBar;
+    public Image healthBar;
     private Vector2 originalDashCooldownBarSize;
+    private Vector2 originalHealthBarSize;
     public float jumpBufferTime = 0.2f;
     public float jumpBufferCounter = 0f;
     public Vector3 respawnPosition;
@@ -50,6 +54,8 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         originalDashCooldownBarSize = dashCooldownBar.rectTransform.rect.size;
+        originalHealthBarSize = healthBar.rectTransform.rect.size;
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -120,7 +126,7 @@ public class PlayerScript : MonoBehaviour
         dashCooldown = math.min(dashCooldown + Time.deltaTime, maxDashCooldown);
         jumpBufferCounter = Mathf.Max(0, jumpBufferCounter - Time.deltaTime);
         dashCooldownBar.rectTransform.sizeDelta = new Vector2(dashCooldown / maxDashCooldown * originalDashCooldownBarSize.x, originalDashCooldownBarSize.y);
-
+        healthBar.rectTransform.sizeDelta = new Vector2(health / maxHealth * originalHealthBarSize.x, originalHealthBarSize.y);
         if (Input.GetKeyDown(KeyCode.LeftShift) && dashCooldown >= maxDashCooldown / dashCharges && inputVector != Vector3.zero)
         {
             rb.AddForce((cameraForward.normalized * inputVector.z + cameraRight.normalized * inputVector.x).normalized * dashPower, ForceMode.Impulse);
@@ -158,6 +164,11 @@ public class PlayerScript : MonoBehaviour
         
         float totalSpeed = rb.linearVelocity.magnitude;
         velocityText.text = Mathf.Round(totalSpeed) + "";
+        if (health <= 0)
+        {
+            transform.position = respawnPosition;
+            health = maxHealth;
+        }
 
     }
 

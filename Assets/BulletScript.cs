@@ -8,6 +8,7 @@ public class BulletScript : MonoBehaviour
     public GameObject gun;
     private Renderer renderer;
     public float lifeTime;
+    public float damage;
     private float lifeTimer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,7 +33,11 @@ public class BulletScript : MonoBehaviour
     {
         if (hit.gameObject != gun && hit.gameObject.layer != LayerMask.NameToLayer("Bullet") && hit.gameObject.layer != LayerMask.NameToLayer("Drone"))
         {
-           Destroy(gameObject); 
+            Destroy(gameObject);
+            if (hit.gameObject == target)
+            {
+                target.GetComponent<PlayerScript>().health -= damage;
+            }
         }
     }
 }

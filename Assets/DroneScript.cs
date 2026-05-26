@@ -16,6 +16,7 @@ public class DroneScript : MonoBehaviour
     public GameObject bullet;
     public bool hasLineOfSiteToTarget;
     private int gunSequence = 1;
+    public float damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -49,6 +50,8 @@ public class DroneScript : MonoBehaviour
             BulletScript BulletScript = newBullet.GetComponent<BulletScript>();
             BulletScript.target = target;
             BulletScript.gun = gameObject;
+            BulletScript.damage = damage;
+
         }
 
 
