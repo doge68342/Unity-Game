@@ -30,7 +30,7 @@ public class BulletScript : MonoBehaviour
 
     void OnTriggerEnter(Collider hit)
     {
-        if (hit.gameObject != gun)
+        if (hit.gameObject != gun && hit.gameObject.layer != LayerMask.NameToLayer("Bullet") && hit.gameObject.layer != LayerMask.NameToLayer("Drone"))
         {
            Destroy(gameObject); 
         }

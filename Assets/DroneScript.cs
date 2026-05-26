@@ -8,11 +8,13 @@ public class DroneScript : MonoBehaviour
     private Transform targetTransform;
     public float droneSpeed;
     private Rigidbody rb;
+
     public float preferedDistance;
     public float stopZone;
     public float fireRate;
     private float shootTimer;
     public GameObject bullet;
+    public bool hasLineOfSiteToTarget;
     private int gunSequence = 1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,9 +27,9 @@ public class DroneScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(targetTransform);
+        transform.LookAt(targetTransform.position + new Vector3(0, 1, 0)); // tracks ur head 
         shootTimer = math.max(0, shootTimer - Time.deltaTime);
-        if (shootTimer <= 0)
+        if (shootTimer <= 0 && hasLineOfSiteToTarget)
         {
             shootTimer = 1/fireRate;
 
@@ -48,23 +50,47 @@ public class DroneScript : MonoBehaviour
             BulletScript.target = target;
             BulletScript.gun = gameObject;
         }
+
+
+
+        RaycastHit hitInfo;
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, Mathf.Infinity, ~LayerMask.GetMask("Bullet")))
+        {
+            if (hitInfo.collider.gameObject == target)
+            {
+                hasLineOfSiteToTarget = true;
+            }
+            else
+            {
+                hasLineOfSiteToTarget = false;
+            }
+        }
+
     }
 
     void FixedUpdate()
     {
-        // Rotate through physics so it stays in sync with velocity
         float distantToTarget = (targetTransform.position - transform.position).magnitude;
-        if (distantToTarget > preferedDistance)
+        if (distantToTarget > preferedDistance + stopZone)
         {
-            rb.linearVelocity = transform.forward * droneSpeed;
+            rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, transform.forward * droneSpeed, 1f - Mathf.Exp(-2f * Time.fixedDeltaTime));
         }
-        else if (distantToTarget < preferedDistance + stopZone)
+        else if (distantToTarget < preferedDistance - stopZone && hasLineOfSiteToTarget)
         {
-            rb.linearVelocity = -transform.forward * droneSpeed;
+            rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, -transform.forward * droneSpeed, 1f - Mathf.Exp(-2f * Time.fixedDeltaTime));
         }
         else
         {
-            rb.linearVelocity = Vector3.zero;
+            rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, 1f - Mathf.Exp(-2f * Time.fixedDeltaTime));
+        }
+
+        RaycastHit hitInfo;
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, Mathf.Infinity, ~LayerMask.GetMask("Bullet", "Drone")))
+        {
+            if (hitInfo.distance <= 5 && hitInfo.collider.gameObject != target)
+            {
+                rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.up * droneSpeed, 1f - Mathf.Exp(-2f * Time.fixedDeltaTime));
+            }
         }
     }
 }
