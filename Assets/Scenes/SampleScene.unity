@@ -376,63 +376,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167068753}
   m_CullTransparentMesh: 1
---- !u!1001 &275104792
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5248011358087204634, guid: 5e606c7d4f5e44b4ea0045851d050ca9, type: 3}
-      propertyPath: m_Name
-      value: Ground
-      objectReference: {fileID: 0}
-    - target: {fileID: 8284785980237745523, guid: 5e606c7d4f5e44b4ea0045851d050ca9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8284785980237745523, guid: 5e606c7d4f5e44b4ea0045851d050ca9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8284785980237745523, guid: 5e606c7d4f5e44b4ea0045851d050ca9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8284785980237745523, guid: 5e606c7d4f5e44b4ea0045851d050ca9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8284785980237745523, guid: 5e606c7d4f5e44b4ea0045851d050ca9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8284785980237745523, guid: 5e606c7d4f5e44b4ea0045851d050ca9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8284785980237745523, guid: 5e606c7d4f5e44b4ea0045851d050ca9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8284785980237745523, guid: 5e606c7d4f5e44b4ea0045851d050ca9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8284785980237745523, guid: 5e606c7d4f5e44b4ea0045851d050ca9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8284785980237745523, guid: 5e606c7d4f5e44b4ea0045851d050ca9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5e606c7d4f5e44b4ea0045851d050ca9, type: 3}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +388,6 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
-  - component: {fileID: 330585549}
   - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Player Camera
@@ -669,18 +611,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &330585549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b997b257e498ae6a887867a267731d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BGMusic
 --- !u!1001 &390428452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1703,14 +1633,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9a999c9fd001862c8878cf79f1474e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridSpawnerScript
-  gridObject: {fileID: 8873817256003431601, guid: 40f50de49b1134e49a1096d3f9dc1252, type: 3}
+  gridObject: {fileID: 5065983877824890964, guid: 314506f0354a39ebdad1457e2ec87ec8, type: 3}
   gridSize: 30
   position: {x: -75, y: 5, z: -75}
   gridScale: 5
   maxGridObjectHeight: 10
   girdObjectScale: 5
-  randomizeInterval: 5
+  randomizeInterval: 20
   randomizeTimer: 0
+  movementCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animationLength: 3
+  animationTimer: 0
 --- !u!4 &1136506742
 Transform:
   m_ObjectHideFlags: 0
@@ -2059,7 +2015,6 @@ GameObject:
   - component: {fileID: 1502293609}
   - component: {fileID: 1502293614}
   - component: {fileID: 1502293615}
-  - component: {fileID: 1502293616}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -2156,7 +2111,7 @@ Transform:
   m_GameObject: {fileID: 1502293608}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 34.190002, z: 0}
+  m_LocalPosition: {x: 0, y: 76.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2185,7 +2140,7 @@ MonoBehaviour:
   wallJumpDownwardsForceCancelationFactor: 0.85
   cameraSensitivity: 2800
   cameraTransform: {fileID: 330585546}
-  cameraOffset: {x: 0, y: 1, z: 0}
+  cameraOffset: {x: 0, y: 0.99, z: 0}
   groundMovementSmoothingFactor: 10
   airMovementSmoothingFactor: 2.5
   maxDashCooldown: 4.5
@@ -2194,7 +2149,7 @@ MonoBehaviour:
   healthBar: {fileID: 167068755}
   jumpBufferTime: 0.1
   jumpBufferCounter: 0
-  respawnPosition: {x: 0, y: 35, z: 0}
+  respawnPosition: {x: 0, y: 0, z: 0}
   dashCharges: 3
   isOnGround: 0
   isTouchingWall: 0
@@ -2226,43 +2181,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &1502293616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1502293608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b6217c558f79ec89a72050592b4340c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerScript
-  maxHealth: 100
-  health: 0
-  playerSpeed: 2
-  jumpPower: 5
-  jumpBoostFactor: 0.75
-  wallJumpPower: 5
-  walljumpNormalPower: 15
-  dashPower: 20
-  wallJumpDownwardsForceCancelationFactor: 1
-  cameraSensitivity: 3200
-  cameraTransform: {fileID: 0}
-  cameraOffset: {x: 0, y: 0.99, z: 0}
-  groundMovementSmoothingFactor: 10
-  airMovementSmoothingFactor: 5
-  maxDashCooldown: 1
-  velocityText: {fileID: 0}
-  dashCooldownBar: {fileID: 0}
-  healthBar: {fileID: 0}
-  jumpBufferTime: 0.2
-  jumpBufferCounter: 0
-  respawnPosition: {x: 0, y: 0, z: 0}
-  dashCharges: 0
-  isOnGround: 0
-  isTouchingWall: 0
-  dashCooldown: 0
 --- !u!1001 &1584690449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2710,7 +2628,6 @@ SceneRoots:
   - {fileID: 41706197}
   - {fileID: 836109093}
   - {fileID: 1136506742}
-  - {fileID: 275104792}
   - {fileID: 390428452}
   - {fileID: 499517010}
   - {fileID: 1031447662}
