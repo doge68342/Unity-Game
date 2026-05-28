@@ -7,6 +7,7 @@ using TMPro.EditorUtilities;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
@@ -36,7 +37,6 @@ public class PlayerScript : MonoBehaviour
     public float jumpBufferCounter = 0f;
     public Vector3 respawnPosition;
     public int dashCharges;
-
     public bool isOnGround;
     public bool isTouchingWall;
     private Rigidbody rb;
@@ -48,6 +48,9 @@ public class PlayerScript : MonoBehaviour
     private Vector3 cameraForward;
     private Vector3 cameraRight;
     public float dashCooldown;
+    public LineRenderer laserBeam;
+    public float damagePerSecond;
+    public WaveLogic waveLogic;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -56,6 +59,7 @@ public class PlayerScript : MonoBehaviour
         originalDashCooldownBarSize = dashCooldownBar.rectTransform.rect.size;
         originalHealthBarSize = healthBar.rectTransform.rect.size;
         health = maxHealth;
+        laserBeam.material.SetInt("unity_GUIZTestMode", (int)UnityEngine.Rendering.CompareFunction.Always);
     }
 
     // Update is called once per frame
@@ -138,6 +142,12 @@ public class PlayerScript : MonoBehaviour
             transform.position = respawnPosition;
         }
 
+
+        if (Input.GetMouseButton(0)) laserBeam.enabled = true; else laserBeam.enabled = false;
+
+        laserBeam.SetPosition(0, laserBeam.transform.position);
+        // its in void lateUpdate()
+
     }
     void FixedUpdate()
     {
@@ -168,13 +178,28 @@ public class PlayerScript : MonoBehaviour
         {
             transform.position = respawnPosition;
             health = maxHealth;
+            waveLogic.Reset();
         }
 
     }
 
     void LateUpdate()
     {
+        Ray mouseRay = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+        RaycastHit mouseRayInfo;
         cameraTransform.position = transform.position + cameraOffset;
+        if (Physics.Raycast(mouseRay,out mouseRayInfo, Mathf.Infinity, ~LayerMask.GetMask("Bullet", "Player")))
+        {
+            laserBeam.SetPosition(1, mouseRayInfo.point);
+            if (mouseRayInfo.collider.gameObject.TryGetComponent<DroneScript>(out DroneScript droneScript) && Input.GetMouseButton(0))
+            {
+                droneScript.TakeDamage(damagePerSecond * Time.deltaTime);
+            }
+        }
+        else
+        {
+            laserBeam.SetPosition(1, mouseRay.GetPoint(1000f));
+        }
     }
 
     void OnCollisionEnter(Collision collision)

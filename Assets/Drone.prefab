@@ -92,6 +92,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: e9d093d63de5f8f6db8d31c0bdcd8087, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ce009e6636d082949866223cb55db104, type: 2}
+    - target: {fileID: -1461304994638716399, guid: e9d093d63de5f8f6db8d31c0bdcd8087, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ce009e6636d082949866223cb55db104, type: 2}
     - target: {fileID: 919132149155446097, guid: e9d093d63de5f8f6db8d31c0bdcd8087, type: 3}
       propertyPath: m_Name
       value: Drone
@@ -157,10 +165,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DroneScript
   target: {fileID: 0}
   droneSpeed: 12
-  preferedDistance: 15
-  stopZone: 0
-  fireRate: 0
-  bullet: {fileID: 0}
+  preferedDistance: 10
+  stopZone: 2
+  fireRate: 1
+  bullet: {fileID: 4451620935296596589, guid: dc090b534049662789bf4ae92a36badb, type: 3}
+  hasLineOfSiteToTarget: 0
+  damage: 5
+  maxHealth: 3
+  health: 0
+  regenerationPercentPerSecond: 2.5
+  baseColor: {r: 0, g: 0, b: 0, a: 0}
+  damagedColor: {r: 0.58431375, g: 0, b: 0, a: 0}
+  waveLogic: {fileID: 968739225976064288, guid: 588c109f1b26ff8468f8e5e27b738f5f, type: 3}
 --- !u!135 &6993230933964665876
 SphereCollider:
   m_ObjectHideFlags: 0

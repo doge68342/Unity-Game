@@ -8,6 +8,7 @@ public class DroneScript : MonoBehaviour
     private Transform targetTransform;
     public float droneSpeed;
     private Rigidbody rb;
+    private Renderer[] renderers;
 
     public float preferedDistance;
     public float stopZone;
@@ -17,12 +18,27 @@ public class DroneScript : MonoBehaviour
     public bool hasLineOfSiteToTarget;
     private int gunSequence = 1;
     public float damage;
+    public float maxHealth;
+    public float health;
+    public float regenerationPercentPerSecond;
+    public Color baseColor;
+    public Color damagedColor;
+    public WaveLogic waveLogic;
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         targetTransform = target.GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
         shootTimer = 1/fireRate;
+        health = maxHealth;
+        renderers = GetComponentsInChildren<Renderer>();
+        baseColor = renderers[1].material.color;
     }
 
     // Update is called once per frame
@@ -69,6 +85,25 @@ public class DroneScript : MonoBehaviour
             }
         }
 
+        if (health <= 0)
+        {
+            waveLogic.dronesLeft--;
+            Destroy(gameObject);
+        }
+
+        health = math.min(maxHealth, health + maxHealth * regenerationPercentPerSecond * Time.deltaTime / 100);
+
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            
+            renderers[i].material.color = Color.Lerp(baseColor, damagedColor, 1 - health/maxHealth);   
+            
+        }
+
+        if (transform.position.y < 5)
+        {
+            transform.position += new Vector3(0, 50, 0);
+        }
     }
 
     void FixedUpdate()
