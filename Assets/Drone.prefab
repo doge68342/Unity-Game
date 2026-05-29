@@ -164,14 +164,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DroneScript
   target: {fileID: 0}
-  droneSpeed: 12
+  droneSpeed: 8
   preferedDistance: 10
   stopZone: 2
   fireRate: 1
   bullet: {fileID: 4451620935296596589, guid: dc090b534049662789bf4ae92a36badb, type: 3}
   hasLineOfSiteToTarget: 0
   damage: 5
-  maxHealth: 3
+  maxHealth: 1.5
   health: 0
   regenerationPercentPerSecond: 2.5
   baseColor: {r: 0, g: 0, b: 0, a: 0}

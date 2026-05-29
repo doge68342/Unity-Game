@@ -51,6 +51,19 @@ public class PlayerScript : MonoBehaviour
     public LineRenderer laserBeam;
     public float damagePerSecond;
     public WaveLogic waveLogic;
+    public bool invulnerable;
+    public float dashInvulnerabilityDuration;
+    public float dashInvulnerabilityTimer;
+    public ParticleSystem laserParticle;
+    public ParticleSystem laserHitParticle;
+
+    public void takeDamage(float damageToTake)
+    {
+        if (invulnerable == false)
+        {
+            health -= damageToTake;
+        }
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -59,7 +72,8 @@ public class PlayerScript : MonoBehaviour
         originalDashCooldownBarSize = dashCooldownBar.rectTransform.rect.size;
         originalHealthBarSize = healthBar.rectTransform.rect.size;
         health = maxHealth;
-        laserBeam.material.SetInt("unity_GUIZTestMode", (int)UnityEngine.Rendering.CompareFunction.Always);
+        laserParticle.Stop();
+        laserHitParticle.Stop();
     }
 
     // Update is called once per frame
@@ -95,7 +109,7 @@ public class PlayerScript : MonoBehaviour
             if (item.Value.y > Mathf.Cos(70 * Mathf.Deg2Rad))
             {
                 isOnGround = true;
-            } 
+            }
             else if (item.Value.y < Mathf.Cos(70 * Mathf.Deg2Rad) && item.Value.y > Mathf.Cos(90 * Mathf.Deg2Rad))
             {
                 isTouchingWall = true;
@@ -106,7 +120,7 @@ public class PlayerScript : MonoBehaviour
 
 
         if (Input.GetKeyDown(KeyCode.Space))
-        {   
+        {
             jumpBufferCounter = jumpBufferTime;
         }
 
@@ -115,7 +129,7 @@ public class PlayerScript : MonoBehaviour
             if (isOnGround || isTouchingWall && isOnGround)
             {
                 jumpBufferCounter = 0f;
-                rb.AddForce(Vector3.up  * jumpPower + (cameraForward.normalized * inputVector.z + cameraRight.normalized * inputVector.x).normalized * jumpPower * jumpBoostFactor, ForceMode.Impulse); 
+                rb.AddForce(Vector3.up * jumpPower + (cameraForward.normalized * inputVector.z + cameraRight.normalized * inputVector.x).normalized * jumpPower * jumpBoostFactor, ForceMode.Impulse);
             }
 
             if (isTouchingWall && !isOnGround)
@@ -128,13 +142,20 @@ public class PlayerScript : MonoBehaviour
 
 
         dashCooldown = math.min(dashCooldown + Time.deltaTime, maxDashCooldown);
+        dashInvulnerabilityTimer -= Time.deltaTime;
+        if (dashInvulnerabilityTimer > 0) invulnerable = true;
+        if (dashInvulnerabilityTimer <= 0) invulnerable = false;
+
         jumpBufferCounter = Mathf.Max(0, jumpBufferCounter - Time.deltaTime);
+
         dashCooldownBar.rectTransform.sizeDelta = new Vector2(dashCooldown / maxDashCooldown * originalDashCooldownBarSize.x, originalDashCooldownBarSize.y);
         healthBar.rectTransform.sizeDelta = new Vector2(health / maxHealth * originalHealthBarSize.x, originalHealthBarSize.y);
+
         if (Input.GetKeyDown(KeyCode.LeftShift) && dashCooldown >= maxDashCooldown / dashCharges && inputVector != Vector3.zero)
         {
             rb.AddForce((cameraForward.normalized * inputVector.z + cameraRight.normalized * inputVector.x).normalized * dashPower, ForceMode.Impulse);
             dashCooldown -= maxDashCooldown / dashCharges;
+            dashInvulnerabilityTimer = dashInvulnerabilityDuration;
         }
 
         if (transform.position.y <= -5)
@@ -143,9 +164,18 @@ public class PlayerScript : MonoBehaviour
         }
 
 
-        if (Input.GetMouseButton(0)) laserBeam.enabled = true; else laserBeam.enabled = false;
-
-        laserBeam.SetPosition(0, laserBeam.transform.position);
+        if (Input.GetMouseButton(0))
+        {
+            laserBeam.enabled = true;
+            laserParticle.Play();
+            laserHitParticle.Play();
+        }
+        else
+        {
+            laserBeam.enabled = false;
+            laserParticle.Stop();
+            laserHitParticle.Stop();
+        }
         // its in void lateUpdate()
 
     }
@@ -171,7 +201,7 @@ public class PlayerScript : MonoBehaviour
         {
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, 1f - Mathf.Exp(-airMovementSmoothingFactor * Time.fixedDeltaTime));
         }
-        
+
         float totalSpeed = rb.linearVelocity.magnitude;
         velocityText.text = Mathf.Round(totalSpeed) + "";
         if (health <= 0)
@@ -188,17 +218,24 @@ public class PlayerScript : MonoBehaviour
         Ray mouseRay = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         RaycastHit mouseRayInfo;
         cameraTransform.position = transform.position + cameraOffset;
-        if (Physics.Raycast(mouseRay,out mouseRayInfo, Mathf.Infinity, ~LayerMask.GetMask("Bullet", "Player")))
+        laserBeam.SetPosition(0, laserBeam.transform.position);
+        if (Physics.Raycast(mouseRay, out mouseRayInfo, Mathf.Infinity, ~LayerMask.GetMask("Bullet", "Player")))
         {
             laserBeam.SetPosition(1, mouseRayInfo.point);
             if (mouseRayInfo.collider.gameObject.TryGetComponent<DroneScript>(out DroneScript droneScript) && Input.GetMouseButton(0))
             {
                 droneScript.TakeDamage(damagePerSecond * Time.deltaTime);
             }
+            laserHitParticle.transform.position = mouseRayInfo.point;
+            laserHitParticle.transform.rotation = Quaternion.LookRotation(mouseRayInfo.normal);
+            laserHitParticle.gameObject.GetComponent<Renderer>().material.color = mouseRayInfo.collider.gameObject.GetComponentInChildren<Renderer>().material.color;
+            laserHitParticle.Stop();
+            laserHitParticle.Play();
         }
         else
         {
             laserBeam.SetPosition(1, mouseRay.GetPoint(1000f));
+            laserHitParticle.transform.position = mouseRay.GetPoint(1000f);
         }
     }
 

@@ -36,7 +36,7 @@ public class BulletScript : MonoBehaviour
             Destroy(gameObject);
             if (hit.gameObject == target)
             {
-                target.GetComponent<PlayerScript>().health -= damage;
+                target.GetComponent<PlayerScript>().takeDamage(damage);
             }
         }
     }
