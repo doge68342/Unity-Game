@@ -176,7 +176,7 @@ MonoBehaviour:
   regenerationPercentPerSecond: 2.5
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   damagedColor: {r: 0.58431375, g: 0, b: 0, a: 0}
-  waveLogic: {fileID: 968739225976064288, guid: 588c109f1b26ff8468f8e5e27b738f5f, type: 3}
+  waveLogic: {fileID: 0}
 --- !u!135 &6993230933964665876
 SphereCollider:
   m_ObjectHideFlags: 0

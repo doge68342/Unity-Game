@@ -425,7 +425,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 6.928203
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -440,9 +440,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 120
+  field of view: 120.00001
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1533,7 +1533,7 @@ MonoBehaviour:
   gridScale: 5
   maxGridObjectHeight: 10
   girdObjectScale: 5
-  randomizeInterval: 20
+  randomizeInterval: 30
   randomizeTimer: 0
   movementCurve:
     serializedVersion: 2
@@ -1920,7 +1920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerScript
   maxHealth: 100
-  health: 0
+  health: 100
   playerSpeed: 10
   jumpPower: 7.5
   jumpBoostFactor: 0.75
