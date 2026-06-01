@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/BulletScript.cs" />
+    <Compile Include="Assets/JumpPadScript.cs" />
     <Compile Include="Assets/PlayerScript.cs" />
     <Compile Include="Assets/GridSpawner Script.cs" />
     <Compile Include="Assets/DroneScript.cs" />
