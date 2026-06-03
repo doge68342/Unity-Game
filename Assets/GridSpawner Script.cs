@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Runtime.CompilerServices;
+using System.Xml;
+using TMPro;
+//using TMPro.EditorUtilities;
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class GridSpawnerScript : MonoBehaviour
 {
@@ -25,9 +32,12 @@ public class GridSpawnerScript : MonoBehaviour
     public float animationTimer;
     public int bouncePadChance;
     public GameObject bouncePad;
+    public Image refreshBar;
+    public Vector2 originalRefreshBarSize;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        originalRefreshBarSize = refreshBar.rectTransform.rect.size;
         randomizeTimer = 0;
         for (int x = 0; x < gridSize; x++)
         {
@@ -41,12 +51,14 @@ public class GridSpawnerScript : MonoBehaviour
         }
         targetPillarHeights = new int[pillars.Count];
         currentPillarHeights = new int[pillars.Count];
+
     }
 
     // Update is called once per frame
     void Update()
     {
         bouncePadsCount = bouncePads.Count;
+        refreshBar.rectTransform.sizeDelta = new Vector2(randomizeTimer / randomizeInterval * originalRefreshBarSize.x, originalRefreshBarSize.y);
     }
 
     void FixedUpdate()
