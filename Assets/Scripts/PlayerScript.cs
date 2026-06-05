@@ -64,6 +64,16 @@ public class PlayerScript : MonoBehaviour
             health -= damageToTake;
         }
     }
+    public void changeStat(int stat, float power)
+    {
+        if (stat == 0) damagePerSecond += power;
+        if (stat == 1) dashPower += power;
+        if (stat == 2) maxHealth += power;
+    }
+    public void heal()
+    {
+        health = maxHealth;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

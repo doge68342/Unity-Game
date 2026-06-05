@@ -6206,10 +6206,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ed29e5df996e4aaa07e6bea8a59034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PerkScript
+  canvas: {fileID: 41706196}
+  perkCard: {fileID: 4273498469926114065, guid: 9c355ccecdaf3c49fbbf9c7657e064fe, type: 3}
   player: {fileID: 1502293608}
   waveLogic: {fileID: 968739226111541317}
   perkFrequency: 3
   nextWaveTooOfferPerks: 0
+  perksToOffer: 3
+  perkCards: []
 --- !u!4 &771285082
 Transform:
   m_ObjectHideFlags: 0
@@ -6863,7 +6867,7 @@ MonoBehaviour:
   walljumpNormalPower: 15
   dashPower: 20
   wallJumpDownwardsForceCancelationFactor: 0.85
-  cameraSensitivity: 2800
+  cameraSensitivity: 1600
   cameraTransform: {fileID: 330585546}
   cameraOffset: {x: 0, y: 0.99, z: 0}
   groundMovementSmoothingFactor: 10

@@ -78,7 +78,6 @@ public class GridSpawnerScript : MonoBehaviour
 
         if (animationTimer <= 0 && bouncePads.Count == 0)
         {
-            Debug.Log(UnityEngine.Random.value);
             shortCount = 0;
             for (int i = 0; i < pillars.Count; i++)
             {
