@@ -6214,6 +6214,7 @@ MonoBehaviour:
   nextWaveTooOfferPerks: 0
   perksToOffer: 3
   perkCards: []
+  timeSlowScript: {fileID: 2081315354}
 --- !u!4 &771285082
 Transform:
   m_ObjectHideFlags: 0
@@ -6867,7 +6868,7 @@ MonoBehaviour:
   walljumpNormalPower: 15
   dashPower: 20
   wallJumpDownwardsForceCancelationFactor: 0.85
-  cameraSensitivity: 1600
+  cameraSensitivity: 2133.3333
   cameraTransform: {fileID: 330585546}
   cameraOffset: {x: 0, y: 0.99, z: 0}
   groundMovementSmoothingFactor: 10
@@ -12193,6 +12194,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2081315353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2081315355}
+  - component: {fileID: 2081315354}
+  m_Layer: 0
+  m_Name: TimeSlow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2081315354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081315353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df13741453f702b7a7ac9da65128133, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimeSlowScript
+--- !u!4 &2081315355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081315353}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 765, y: 342.52185, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &968739226111541317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12353,3 +12398,4 @@ SceneRoots:
   - {fileID: 7117874322107792663}
   - {fileID: 2066862769}
   - {fileID: 771285082}
+  - {fileID: 2081315355}

@@ -96,8 +96,8 @@ public class PlayerScript : MonoBehaviour
         xRotation -= mouseY;
         zRotation += mouseX;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-        cameraTransform.localRotation = Quaternion.Euler(xRotation, zRotation, 0f);
+  
+        if (Cursor.lockState == CursorLockMode.Locked) cameraTransform.localRotation = Quaternion.Euler(xRotation, zRotation, 0f);
 
         float moveZ = 0f, moveX = 0f;
         if (Input.GetKey(KeyCode.W)) moveZ = 1.0f;

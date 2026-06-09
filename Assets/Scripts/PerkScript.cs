@@ -22,6 +22,7 @@ public class PerkScript : MonoBehaviour
     private List<PerkData> perks = new List<PerkData>();
     public List<Image> perkCards = new List<Image>();
     private bool offerPerksDebounce;
+    public TimeSlowScript timeSlowScript;
 
     public int NameToId(string name)
     {
@@ -81,6 +82,7 @@ public class PerkScript : MonoBehaviour
                 Destroy(perkCard.gameObject);
             }
             perkCards.Clear();
+            timeSlowScript.SlowTime(1);
             Cursor.lockState = CursorLockMode.Locked;
         });
 
@@ -107,6 +109,7 @@ public class PerkScript : MonoBehaviour
         {
             offerPerksDebounce = true;
             nextWaveTooOfferPerks += perkFrequency;
+            timeSlowScript.SlowTime(0.2f);
             for (int i = 0; i < perksToOffer; i++)
             {
                 newPerkCard(Mathf.FloorToInt(UnityEngine.Random.value * perks.Count), 1, new Vector2((i - 1) * 350, 0), perkCard);
