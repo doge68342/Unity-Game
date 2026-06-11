@@ -25,6 +25,7 @@ public class DroneScript : MonoBehaviour
     public Color damagedColor;
     public WaveLogic waveLogic;
     public AudioClip deathSound;
+    public AudioClip shootSound;
     public SoundPlayerScript soundPlayerScript;
 
     public void TakeDamage(float damageAmount)
@@ -64,6 +65,8 @@ public class DroneScript : MonoBehaviour
             {
                 gunSequence = 1;
             }
+
+            soundPlayerScript.playSoundAtPosition(shootSound, 1, 1, transform.position);
 
             BulletScript BulletScript = newBullet.GetComponent<BulletScript>();
             BulletScript.target = target;

@@ -181,6 +181,7 @@ MonoBehaviour:
   damagedColor: {r: 0.58431375, g: 0, b: 0, a: 0}
   waveLogic: {fileID: 0}
   deathSound: {fileID: 8300000, guid: 3eea572cc82060ebd8ba41714f1aacf8, type: 3}
+  shootSound: {fileID: 8300000, guid: acd98895d996fe7f08b2ae6992464256, type: 3}
   soundPlayerScript: {fileID: 0}
 --- !u!135 &6993230933964665876
 SphereCollider:
