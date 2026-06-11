@@ -26,11 +26,12 @@ public class SoundPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (GameObject TSO in temporarySoundObjects)
+        for (int i = temporarySoundObjects.Count - 1; i >= 0; i--)
         {
+            GameObject TSO = temporarySoundObjects[i];
             if (TSO.GetComponent<AudioSource>().isPlaying == false)
             {
-                temporarySoundObjects.Remove(TSO);
+                temporarySoundObjects.RemoveAt(i);
                 Destroy(TSO);
             }
         }
