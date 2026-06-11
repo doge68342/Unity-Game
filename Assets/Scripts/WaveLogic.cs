@@ -17,6 +17,7 @@ public class WaveLogic : MonoBehaviour
     public TMP_Text bestWaveText;
     public int bestWave;
     public List<GameObject> clonedDrones = new List<GameObject>();
+    public SoundPlayerScript soundPlayerScript;
 
     public void Reset()
     {
@@ -47,6 +48,7 @@ public class WaveLogic : MonoBehaviour
                 clonedDrones.Add(clonedDrone);
                 clonedDrone.GetComponent<DroneScript>().target = player;
                 clonedDrone.GetComponent<DroneScript>().waveLogic = this;
+                clonedDrone.GetComponent<DroneScript>().soundPlayerScript = soundPlayerScript;
             }
         }
         waveText.text = "Wave " + wave;

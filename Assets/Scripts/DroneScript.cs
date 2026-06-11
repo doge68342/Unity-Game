@@ -24,10 +24,12 @@ public class DroneScript : MonoBehaviour
     public Color baseColor;
     public Color damagedColor;
     public WaveLogic waveLogic;
+    public AudioClip deathSound;
+    public SoundPlayerScript soundPlayerScript;
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damageAmount)
     {
-        health -= damage;
+        health -= damageAmount;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -89,6 +91,7 @@ public class DroneScript : MonoBehaviour
         {
             waveLogic.dronesLeft--;
             Destroy(gameObject);
+            soundPlayerScript.playSoundAtPosition(deathSound, 1f, 2f, transform.position);
         }
 
         health = math.min(maxHealth, health + maxHealth * regenerationPercentPerSecond * Time.deltaTime / 100);

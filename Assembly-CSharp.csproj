@@ -57,6 +57,7 @@
     <Compile Include="Assets/Scripts/WaveLogic.cs" />
     <Compile Include="Assets/Scripts/BulletScript.cs" />
     <Compile Include="Assets/Scripts/PlayerScript.cs" />
+    <Compile Include="Assets/Scripts/SoundPlayerScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

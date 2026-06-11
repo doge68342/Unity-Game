@@ -23,6 +23,9 @@ public class PerkScript : MonoBehaviour
     public List<Image> perkCards = new List<Image>();
     private bool offerPerksDebounce;
     public TimeSlowScript timeSlowScript;
+    public float animationLength;
+    public float animationTimer;
+    public AnimationCurve animationCurve;
 
     public int NameToId(string name)
     {
@@ -59,8 +62,10 @@ public class PerkScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Image newPerkCard = Instantiate(perkCard);
         perkCards.Add(newPerkCard);
-        newPerkCard.transform.position = position;
         newPerkCard.transform.SetParent(canvas.transform, false);
+        // newPerkCard.rectTransform.anchoredPosition = new Vector2(position.x, newPerkCard.rectTransform.rect.height / 2 + Screen.height / 2);
+        newPerkCard.rectTransform.anchoredPosition = position;
+
         newPerkCard.color = Color.HSVToRGB(perks[type].hue, 0.33f, 1f);
 
         TMP_Text[] textComponents = newPerkCard.GetComponentsInChildren<TMP_Text>();
@@ -105,6 +110,7 @@ public class PerkScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animationTimer -= Time.deltaTime;
         if (waveLogic.wave == nextWaveTooOfferPerks && !offerPerksDebounce)
         {
             offerPerksDebounce = true;
@@ -115,9 +121,15 @@ public class PerkScript : MonoBehaviour
                 newPerkCard(Mathf.FloorToInt(UnityEngine.Random.value * perks.Count), 1, new Vector2((i - 1) * 350, 0), perkCard);
             }
         }
+
         if (waveLogic.wave >= nextWaveTooOfferPerks)
         {
             offerPerksDebounce = false;
+        }
+
+        foreach (Image perkCard in perkCards)
+        {
+            // perkCard.rectTransform.sizeDelta()
         }
     }
 
